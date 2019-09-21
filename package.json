@@ -1,5 +1,5 @@
 {
-    "name": "agl-hvac",
+    "name": "agl-mixer",
     "version": "0.0.0",
     "description": "HVAC project for AGL based on html5 technologies",
     "scripts": {
@@ -7,11 +7,11 @@
         "build": "webpack",
         "start": "webpack-dev-server"
     },
-    "homepage": "https://bitbucket.org/smarsol/hvac",
+    "homepage": "https://bitbucket.org/smarsol/mixer",
     "author": "humberto.alfonso@asvito.es",
     "repository": {
         "type": "git",
-        "url": "git@bitbucket.org:smarsol/hvac.git"
+        "url": "git@bitbucket.org:smarsol/mixer.git"
     },
     "keywords": [
         "agl",

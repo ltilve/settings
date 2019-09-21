@@ -10,11 +10,7 @@ const ZipPlugin = require('zip-webpack-plugin');
 module.exports = {
     mode: 'production',
     entry: {
-        index: './src/index.js',
-        FANSPEED: './src/js/fan_speed.js',
-        CHAIR: './src/js/chair.js',
-        BUTTON: './src/js/buttons.js',
-        TEMPERATURE: './src/js/temperature.js'
+        index: './src/index.js'
     },
     output: {
         path: __dirname + '/dist',
@@ -59,7 +55,7 @@ module.exports = {
         }),
         new ZipPlugin({
             path: __dirname + '/dist',
-            filename: 'hvac',
+            filename: 'mixer',
             extension: 'wgt',
             exclude: []
         })
@@ -79,6 +75,18 @@ module.exports = {
                     MiniCSSExtractPlugin.loader,
                     "css-loader",
                     "sass-loader"
+                ]
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                        }
+                    }
                 ]
             },
             {

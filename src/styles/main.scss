@@ -22,9 +22,9 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 input[type=range]::-webkit-slider-thumb {
-      height: 32px;
-      width: 32px;
-      border-radius: 16px;
+      height: 64px;
+      width: 64px;
+      border-radius: 32px;
       background: #FFFFFF;
       cursor: pointer;
       -webkit-appearance: none;
@@ -34,11 +34,11 @@ input[type=range]::-webkit-slider-thumb {
 
 progress {
     -webkit-appearance: none;
-    height: 8.4px;
+    height: 16px;
     width: 100%;
-    margin-top: -22px;
-    position: absolute;
+    margin-top: -12px;
     z-index: -1000;
+    display: block;
 }
 
 ::-webkit-progress-bar {
@@ -56,10 +56,11 @@ html {
 }
 
 body {
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-family: Arial;
     color: map-get($colors, font);
-    margin: 5%;
+    margin: 0 5%;
+    height: 100%;
 
     a {
         color: map-get($colors, font);
@@ -86,148 +87,38 @@ body {
         }
     }
 
-    .top {
+    .content {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 10%;
-        margin-bottom: 15%;
+        justify-content: space-around;
+        height: 100%;
 
-        .icon {
-            flex-basis: 10%;
-        }
+        .entry {
+            height: 100px;
 
-        .fanSpeed {
-            flex-basis: 85%;
-            height: 100%;
+            .label {
+                margin: 10px 0;
+            }
 
-            .fanSpeedContainer {
+            .button {
+                width: 10%;
                 position: relative;
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
-
-    .center {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-items: flex-start;
-        height: 100%;
-
-        .item {
-            &:before {
-                content:'';
-                float:left;
-                padding-top:75%;
+                float: left;
+                text-align: center;
+                height: 80px;
+                line-height: 80px;
+                background-color: map-get($colors, primary);
+                color: #FFFFFF;
+                border-radius: 20px;
+                text-decoration: none;
             }
 
-            &.ac, &.auto {
-                .label {
-                    font-weight: bold;
-                    font-size: 2.5rem;
-                    text-align: center;
-                    margin-top: -50%;
-                }
-            }
-
-            &.seat {
-                img {
-                    width: 50%;
-                    margin: 0 25%;
-                }
-
-                &[value="0"] {
-                    .one, .two {
-                        display: none;
-                    }
-                    .off {
-                        display: block;
-                    }
-                }
-
-                &[value="1"] {
-                    .off, .two {
-                        display: none;
-                    }
-                    .one {
-                        display: block;
-                    }
-                }
-
-                &[value="2"] {
-                    .one, .off {
-                        display: none;
-                    }
-                    .two {
-                        display: block;
-                    }
-                }
-
-            }
-
-            &.circulation {
-
-            }
-
-            &.block {
-                &:before {
-                    padding-top:150%;
-                }
-
-                .item {
-                    height: 50%;
-                    position: relative;
-                    float: left;
-                    width: 100%;
-                }
-            }
-
-            &.temperatures {
-                .temperatures-container {
-                    width: 100%;
-                    height: 240px;
-                    overflow-y: scroll;
-
-                    .temperature {
-                        &[enabled='true'] {
-                            color: map-get($colors, primary);
-                        }
-                        &[enabled='false'] {
-                            color: map-get($colors, grey);
-                        }
-                        font-size: 5rem;
-                        font-weight: bold;
-                        text-align: center;
-                        width: 100%;
-                    }
-                }
-            }
-
-            text-decoration: none;
-            flex-basis: 33%;
-        }
-    }
-
-    .bottom {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-items: flex-start;
-        height: 100%;
-        margin-top: 10%;
-
-        .button {
-            flex-basis: 20%;
-
-            img {
-                width: 80%;
-                margin: 0 10%;
+            .slider {
+                width: 78%;
+                position: relative;
+                float: left;
+                margin: 0 1%;
             }
         }
     }
