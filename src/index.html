@@ -25,81 +25,24 @@
             <h1 class="header">
                 Mixer
             </h1>
-            <div class="entry">
-                <div class="label">
-                    Volume 1: <span class="value"> 50%</span>
+            <div id="SliderContainer"></div>
+            <script id="slider-template" type="x-tmpl-mustache">
+                <div class="entry" id="slider-{{id}}" slider-id="{{ id }}" value="{{ value }}">
+                    <div class="label">
+                        {{ name }}: <span class="value"> {{ value }}%</span>
+                    </div>
+                    <a href="#" class="button" onclick="window.decrease(this);">
+                        <span class="icon-volume-decrease"></span>
+                    </a>
+                    <div class="slider">
+                        <input type="range" min="1" value="{{ value }}" max="100" oninput="window.change(this);">
+                        <progress value="{{ value }}" max="100"></progress>
+                    </div>
+                    <a href="#" class="button" onclick="window.increase(this);">
+                        <span class="icon-volume-increase"></span>
+                    </a>
                 </div>
-                <a href="#" class="button">
-                    <span class="icon-volume-decrease"></span>
-                </a>
-                <div class="slider">
-                    <input type="range" min="1" value="1" max="100">
-                    <progress value="50" max="100"></progress>
-                </div>
-                <a href="#" class="button">
-                    <span class="icon-volume-increase"></span>
-                </a>
-            </div>
-            <div class="entry">
-                <div class="label">
-                    Volume 1: <span class="value"> 50%</span>
-                </div>
-                <a href="#" class="button">
-                    <span class="icon-volume-decrease"></span>
-                </a>
-                <div class="slider">
-                    <input type="range" min="1" value="1" max="100">
-                    <progress value="50" max="100"></progress>
-                </div>
-                <a href="#" class="button">
-                    <span class="icon-volume-increase"></span>
-                </a>
-            </div>
-            <div class="entry">
-                <div class="label">
-                    Volume 1: <span class="value"> 50%</span>
-                </div>
-                <a href="#" class="button">
-                    <span class="icon-volume-decrease"></span>
-                </a>
-                <div class="slider">
-                    <input type="range" min="1" value="1" max="100">
-                    <progress value="50" max="100"></progress>
-                </div>
-                <a href="#" class="button">
-                    <span class="icon-volume-increase"></span>
-                </a>
-            </div>
-            <div class="entry">
-                <div class="label">
-                    Volume 1: <span class="value"> 50%</span>
-                </div>
-                <a href="#" class="button">
-                    <span class="icon-volume-decrease"></span>
-                </a>
-                <div class="slider">
-                    <input type="range" min="1" value="1" max="100">
-                    <progress value="50" max="100"></progress>
-                </div>
-                <a href="#" class="button">
-                    <span class="icon-volume-increase"></span>
-                </a>
-            </div>
-            <div class="entry">
-                <div class="label">
-                    Volume 1: <span class="value"> 50%</span>
-                </div>
-                <a href="#" class="button">
-                    <span class="icon-volume-decrease"></span>
-                </a>
-                <div class="slider">
-                    <input type="range" min="1" value="1" max="100">
-                    <progress value="50" max="100"></progress>
-                </div>
-                <a href="#" class="button">
-                    <span class="icon-volume-increase"></span>
-                </a>
-            </div>
+            </script>
         </div>
         <div class="log" id="log">
 
