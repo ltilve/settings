@@ -64,6 +64,8 @@ body {
 
     a {
         color: map-get($colors, font);
+        text-decoration: none;
+        font-size: 2.5rem;
     }
 
     .button {
@@ -94,6 +96,10 @@ body {
         justify-content: space-around;
         height: 100%;
 
+        .header {
+            text-align: center;
+        }
+
         .entry {
             height: 100px;
 
@@ -108,10 +114,6 @@ body {
                 text-align: center;
                 height: 80px;
                 line-height: 80px;
-                background-color: map-get($colors, primary);
-                color: #FFFFFF;
-                border-radius: 20px;
-                text-decoration: none;
             }
 
             .slider {
