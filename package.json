@@ -1,17 +1,17 @@
 {
-    "name": "agl-mixer",
+    "name": "agl-settings",
     "version": "0.0.0",
-    "description": "HVAC project for AGL based on html5 technologies",
+    "description": "Settings project for AGL based on html5 technologies",
     "scripts": {
         "webpack": "webpack",
         "build": "webpack",
         "start": "webpack-dev-server"
     },
-    "homepage": "https://bitbucket.org/smarsol/mixer",
+    "homepage": "https://bitbucket.org/smarsol/settings",
     "author": "humberto.alfonso@asvito.es",
     "repository": {
         "type": "git",
-        "url": "git@bitbucket.org:smarsol/mixer.git"
+        "url": "git@bitbucket.org:smarsol/settings.git"
     },
     "keywords": [
         "agl",
