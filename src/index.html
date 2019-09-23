@@ -23,26 +23,54 @@
     <body>
         <div class="content">
             <h1 class="header">
-                Mixer
+                Settings
             </h1>
-            <div id="SliderContainer"></div>
-            <script id="slider-template" type="x-tmpl-mustache">
-                <div class="entry" id="slider-{{id}}" slider-id="{{ id }}" value="{{ value }}">
-                    <div class="label">
-                        {{ name }}: <span class="value"> {{ value }}%</span>
-                    </div>
-                    <a href="#" class="button" onclick="window.decrease(this);">
-                        <span class="icon-volume-decrease"></span>
-                    </a>
-                    <div class="slider">
-                        <input type="range" min="1" value="{{ value }}" max="100" oninput="window.change(this);">
-                        <progress value="{{ value }}" max="100"></progress>
-                    </div>
-                    <a href="#" class="button" onclick="window.increase(this);">
-                        <span class="icon-volume-increase"></span>
-                    </a>
+            <a href="#" class="entry">
+                <div class="icon">
+                    <span class="icon-time"></span>
                 </div>
-            </script>
+                <div class="label">
+                    Date & Time
+                </div>
+            </a>
+            <a href="#" class="entry">
+                <div class="icon">
+                    <span class="icon-bluetooth"></span>
+                </div>
+                <div class="label">
+                    Bluetooth
+                </div>
+                <div class="control">
+                    <span class="icon-toggle_on"></span>
+                </div>
+            </a>
+            <a href="#" class="entry">
+                <div class="icon">
+                    <span class="icon-wifi"></span>
+                </div>
+                <div class="label">
+                    Wifi
+                </div>
+                <div class="control">
+                    <span class="icon-toggle_off"></span>
+                </div>
+            </a>
+            <a href="#" class="entry">
+                <div class="icon">
+                    <span class="icon-ethernet"></span>
+                </div>
+                <div class="label">
+                    Wired
+                </div>
+            </a>
+            <a href="#" class="entry">
+                <div class="icon">
+                    <span class="icon-speed"></span>
+                </div>
+                <div class="label">
+                    Version info
+                </div>
+            </a>
         </div>
         <div class="log" id="log">
 

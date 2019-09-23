@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?41hzv3');
-  src:  url('fonts/icomoon.eot?41hzv3#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?41hzv3') format('truetype'),
-    url('fonts/icomoon.woff?41hzv3') format('woff'),
-    url('fonts/icomoon.svg?41hzv3#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?h6r2e7');
+  src:  url('fonts/icomoon.eot?h6r2e7#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?h6r2e7') format('truetype'),
+    url('fonts/icomoon.woff?h6r2e7') format('woff'),
+    url('fonts/icomoon.svg?h6r2e7#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,9 +25,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-volume-increase:before {
-  content: "\ea2b";
+.icon-time:before {
+  content: "\e900";
 }
-.icon-volume-decrease:before {
-  content: "\ea2c";
+.icon-bluetooth:before {
+  content: "\e901";
+}
+.icon-wifi:before {
+  content: "\e902";
+}
+.icon-ethernet:before {
+  content: "\e903";
+}
+.icon-speed:before {
+  content: "\e904";
+}
+.icon-toggle_off:before {
+  content: "\e905";
+}
+.icon-toggle_on:before {
+  content: "\e906";
 }

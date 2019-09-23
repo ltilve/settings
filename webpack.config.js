@@ -10,8 +10,7 @@ const ZipPlugin = require('zip-webpack-plugin');
 module.exports = {
     mode: 'production',
     entry: {
-        index: './src/index.js',
-        index: './src/js/app.js'
+        index: './src/index.js'
     },
     output: {
         path: __dirname + '/dist',
@@ -56,7 +55,7 @@ module.exports = {
         }),
         new ZipPlugin({
             path: __dirname + '/dist',
-            filename: 'mixer',
+            filename: 'settings',
             extension: 'wgt',
             exclude: []
         })
