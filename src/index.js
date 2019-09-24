@@ -19,3 +19,13 @@ import './js/AFB.js';
 
 /* CSS */
 import './styles/app.scss';
+
+window.show = function(page){
+    document.getElementById('main').classList.add('hide');
+    document.getElementById(page).classList.remove('hide');
+}
+
+window.hide = function(page) {
+    document.getElementById('main').classList.remove('hide');
+    document.getElementById(page).classList.add('hide');
+}
