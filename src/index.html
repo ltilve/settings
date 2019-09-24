@@ -21,11 +21,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
     <body>
-        <div class="content">
+        <div class="page" id="main">
             <h1 class="header">
                 Settings
             </h1>
-            <a href="#" class="entry">
+            <a href="#" class="entry" onclick="window.show('datetime');">
                 <div class="icon">
                     <span class="icon-time"></span>
                 </div>
@@ -33,7 +33,7 @@
                     Date & Time
                 </div>
             </a>
-            <a href="#" class="entry">
+            <a href="#" class="entry" onclick="window.show('bluetooth');">
                 <div class="icon">
                     <span class="icon-bluetooth"></span>
                 </div>
@@ -44,7 +44,7 @@
                     <span class="icon-toggle_on"></span>
                 </div>
             </a>
-            <a href="#" class="entry">
+            <a href="#" class="entry" onclick="window.show('wifi');">
                 <div class="icon">
                     <span class="icon-wifi"></span>
                 </div>
@@ -55,7 +55,7 @@
                     <span class="icon-toggle_off"></span>
                 </div>
             </a>
-            <a href="#" class="entry">
+            <a href="#" class="entry" onclick="window.show('wired');">
                 <div class="icon">
                     <span class="icon-ethernet"></span>
                 </div>
@@ -63,7 +63,7 @@
                     Wired
                 </div>
             </a>
-            <a href="#" class="entry">
+            <a href="#" class="entry" onclick="window.show('version');">
                 <div class="icon">
                     <span class="icon-speed"></span>
                 </div>
@@ -72,6 +72,62 @@
                 </div>
             </a>
         </div>
+
+        <div class="secondary page hide" id="datetime">
+            <h1 class="header">
+                Date & Time
+            </h1>
+            <div class="entry">
+                <h2>
+                    Date
+                </h2>
+            </div>
+            <div class="entry">
+                <h2>
+                    Time
+                </h2>
+            </div>
+            <a href="#" class="confirm button" onclick="window.hide('datetime')">
+                Confirm
+            </a>
+        </div>
+
+        <div class="secondary page hide" id="bluetooth">
+            <h1 class="header">
+                Bluetotth
+            </h1>
+            <a href="#" class="confirm button" onclick="window.hide('bluetooth')">
+                Confirm
+            </a>
+        </div>
+
+        <div class="secondary page hide" id="wifi">
+            <h1 class="header">
+                Wifi
+            </h1>
+            <a href="#" class="confirm button" onclick="window.hide('wifi')">
+                Confirm
+            </a>
+        </div>
+
+        <div class="secondary page hide" id="wired">
+            <h1 class="header">
+                Wired
+            </h1>
+            <a href="#" class="confirm button" onclick="window.hide('wired')">
+                Confirm
+            </a>
+        </div>
+
+        <div class="secondary page hide" id="version">
+            <h1 class="header">
+                Version info
+            </h1>
+            <a href="#" class="confirm button" onclick="window.hide('version')">
+                Confirm
+            </a>
+        </div>
+
         <div class="log" id="log">
 
         </div>

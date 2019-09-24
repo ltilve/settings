@@ -50,12 +50,16 @@ body {
         }
     }
 
-    .content {
+    .page {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         justify-content: center;
         height: 100%;
+
+        &.hide {
+            display: none;
+        }
 
         .header {
             text-align: center;
@@ -96,6 +100,17 @@ body {
                     color: map-get($colors, primary);
                 }
             }
+        }
+
+        .confirm {
+            position: absolute;
+            bottom: 5%;
+            text-align: center;
+            height: 120px;
+            line-height: 120px;
+            width: 90%;
+            background: map-get($colors, primary);
+            border-radius: 20px;
         }
     }
 
