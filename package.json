@@ -7,11 +7,10 @@
         "build": "webpack",
         "start": "webpack-dev-server"
     },
-    "homepage": "https://bitbucket.org/smarsol/settings",
-    "author": "humberto.alfonso@asvito.es",
+    "homepage": "https://github.com/AGL-web-applications/settings",
     "repository": {
         "type": "git",
-        "url": "git@bitbucket.org:smarsol/settings.git"
+        "url": "git@github.com:AGL-web-applications/agl-js-api.git"
     },
     "keywords": [
         "agl",
