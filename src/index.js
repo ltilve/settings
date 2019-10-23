@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 /* JS */
-import './js/AFB.js';
+import { init } from './js/app';
+import { toggle as toggle_bluetooth } from './js/bluetooth';
 
 /* CSS */
 import './styles/app.scss';
@@ -29,3 +29,9 @@ window.hide = function(page) {
     document.getElementById('main').classList.remove('hide');
     document.getElementById(page).classList.add('hide');
 }
+
+window.toggle_bluetooth =  function() {
+    toggle_bluetooth();
+}
+
+init();

@@ -53,9 +53,10 @@ body {
     .page {
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
         height: 100%;
+        overflow: hidden;
 
         &.hide {
             display: none;
@@ -66,41 +67,74 @@ body {
             margin: 0;
         }
 
-        .entry {
-            height: 120px;
-            line-height: 120px;
-            border-bottom: 1px solid map-get($colors, grey);
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            flex-grow: 2;
 
-            &:last-child {
-                border-bottom: none2;
-            }
+            .entry {
+                height: 120px;
+                line-height: 120px;
+                border-bottom: 1px solid map-get($colors, grey);
 
-            .icon {
-                width: 10%;
-                position: relative;
-                float: left;
-                text-align: center;
-            }
+                &:last-child {
+                    border-bottom: none;
+                }
 
-            .label {
-                position: relative;
-                float: left;
-                text-align: left;
-                width: 80%;
-            }
+                .icon {
+                    width: 10%;
+                    position: relative;
+                    float: left;
+                    text-align: center;
+                }
 
-            .control {
-                width: 10%;
-                position: relative;
-                float: left;
-                text-align: right;
-                font-size: 5rem;
+                .label {
+                    position: relative;
+                    float: left;
+                    text-align: left;
+                    width: 75%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
 
-                .icon-toggle_on {
-                    color: map-get($colors, primary);
+                .control {
+                    width: 15%;
+                    position: relative;
+                    float: left;
+                    text-align: right;
+                    font-size: 5rem;
+
+                    & > * {
+                        height: 120px;
+                        line-height: 120px;
+                    }
+
+                    &.enabled {
+                        .icon-toggle_on {
+                            display: block;
+                            color: map-get($colors, primary);
+                        }
+
+                        .icon-toggle_off {
+                            display: none;
+                        }
+                    }
+
+                    .icon-toggle_on {
+                        display: none;
+                    }
+
+                    .icon-toggle_off {
+                        display: block;
+                    }
                 }
             }
         }
+
+
 
         .confirm {
             position: absolute;

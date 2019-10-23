@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?h6r2e7');
-  src:  url('fonts/icomoon.eot?h6r2e7#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?h6r2e7') format('truetype'),
-    url('fonts/icomoon.woff?h6r2e7') format('woff'),
-    url('fonts/icomoon.svg?h6r2e7#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?6brftk');
+  src:  url('fonts/icomoon.eot?6brftk#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?6brftk') format('truetype'),
+    url('fonts/icomoon.woff?6brftk') format('woff'),
+    url('fonts/icomoon.svg?6brftk#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,11 +25,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-clear:before {
+  content: "\e909";
+}
 .icon-time:before {
   content: "\e900";
 }
 .icon-bluetooth:before {
   content: "\e901";
+}
+.icon-keyboard_arrow_down:before {
+  content: "\e907";
+}
+.icon-keyboard_arrow_up:before {
+  content: "\e908";
+}
+.icon-computer:before {
+  content: "\e90a";
+}
+.icon-phone:before {
+  content: "\e90b";
 }
 .icon-wifi:before {
   content: "\e902";

@@ -25,52 +25,55 @@
             <h1 class="header">
                 Settings
             </h1>
-            <a href="#" class="entry" onclick="window.show('datetime');">
-                <div class="icon">
-                    <span class="icon-time"></span>
-                </div>
-                <div class="label">
-                    Date & Time
-                </div>
-            </a>
-            <a href="#" class="entry" onclick="window.show('bluetooth');">
-                <div class="icon">
-                    <span class="icon-bluetooth"></span>
-                </div>
-                <div class="label">
-                    Bluetooth
-                </div>
-                <div class="control">
-                    <span class="icon-toggle_on"></span>
-                </div>
-            </a>
-            <a href="#" class="entry" onclick="window.show('wifi');">
-                <div class="icon">
-                    <span class="icon-wifi"></span>
-                </div>
-                <div class="label">
-                    Wifi
-                </div>
-                <div class="control">
-                    <span class="icon-toggle_off"></span>
-                </div>
-            </a>
-            <a href="#" class="entry" onclick="window.show('wired');">
-                <div class="icon">
-                    <span class="icon-ethernet"></span>
-                </div>
-                <div class="label">
-                    Wired
-                </div>
-            </a>
-            <a href="#" class="entry" onclick="window.show('version');">
-                <div class="icon">
-                    <span class="icon-speed"></span>
-                </div>
-                <div class="label">
-                    Version info
-                </div>
-            </a>
+            <div class="container">
+                <a href="#" class="entry" onclick="window.show('datetime');">
+                    <div class="icon">
+                        <span class="icon-time"></span>
+                    </div>
+                    <div class="label">
+                        Date & Time
+                    </div>
+                </a>
+                <a href="#" class="entry">
+                    <div class="icon">
+                        <span class="icon-bluetooth"></span>
+                    </div>
+                    <div class="label" onclick="window.show('bluetooth');">
+                        Bluetooth
+                    </div>
+                    <div id="BluetoothControl" class="control enabled" onclick="window.toggle_bluetooth();">
+                        <span class="icon-toggle_on"></span>
+                        <span class="icon-toggle_off"></span>
+                    </div>
+                </a>
+                <a href="#" class="entry" onclick="window.show('wifi');">
+                    <div class="icon">
+                        <span class="icon-wifi"></span>
+                    </div>
+                    <div class="label">
+                        Wifi
+                    </div>
+                    <div class="control">
+                        <span class="icon-toggle_off"></span>
+                    </div>
+                </a>
+                <a href="#" class="entry" onclick="window.show('wired');">
+                    <div class="icon">
+                        <span class="icon-ethernet"></span>
+                    </div>
+                    <div class="label">
+                        Wired
+                    </div>
+                </a>
+                <a href="#" class="entry" onclick="window.show('version');">
+                    <div class="icon">
+                        <span class="icon-speed"></span>
+                    </div>
+                    <div class="label">
+                        Version info
+                    </div>
+                </a>
+            </div>
         </div>
 
         <div class="secondary page hide" id="datetime">
@@ -94,8 +97,22 @@
 
         <div class="secondary page hide" id="bluetooth">
             <h1 class="header">
-                Bluetotth
+                Bluetooth
             </h1>
+            <div id="BluetoothContainer" class="container"></div>
+            <script id="bluetooth-device-template" type="x-tmpl-mustache">
+                <a href="#" class="entry">
+                    <div class="icon">
+                        <span class="icon-{{ properties.icon }}"></span>
+                    </div>
+                    <div class="label">
+                        {{ properties.name }}
+                    </div>
+                    <div class="control">
+                        <span class="icon-clear"></span>
+                    </div>
+                </a>
+            </script>
             <a href="#" class="confirm button" onclick="window.hide('bluetooth')">
                 Confirm
             </a>
