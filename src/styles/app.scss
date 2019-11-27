@@ -1,5 +1,6 @@
 $colors: (
   primary:          #00ADDC,
+  secondary:        #223340,
   font:             #FFFFFF,
   grey:             #848286
 );
@@ -8,3 +9,4 @@ $colors: (
 @import "main.scss";
 @import "portrait.scss";
 @import "landscape.scss";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";

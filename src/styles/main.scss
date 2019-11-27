@@ -26,7 +26,6 @@ body {
     a {
         color: map-get($colors, font);
         text-decoration: none;
-        font-size: 2.5rem;
     }
 
     .button {
@@ -51,33 +50,44 @@ body {
     }
 
     .page {
-        display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: center;
         height: 100%;
         overflow: hidden;
+        position: relative;
 
         &.hide {
             display: none;
         }
 
         .header {
-            text-align: center;
-            margin: 0;
+            text-align: left;
+            margin: 50px 0;
+
+            .backButton {
+                padding-right: 20px;
+                font-size: 1em;
+            }
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
-            justify-content: center;
-            flex-grow: 2;
+            overflow-y: scroll;
+            height: 1040px;
 
             .entry {
-                height: 120px;
-                line-height: 120px;
-                border-bottom: 1px solid map-get($colors, grey);
+                $entryHeight: 120px;
+                height: $entryHeight;
+                line-height: $entryHeight;
+                border-bottom: 9 solid map-get($colors, grey);
+
+                &:nth-last-child(1) {
+                    margin-bottom: 90px;
+                }
+
+                &.secondary {
+                    $entryHeight: 90px;
+                }
 
                 &:last-child {
                     border-bottom: none;
@@ -85,6 +95,7 @@ body {
 
                 .icon {
                     width: 10%;
+                    height: $entryHeight;
                     position: relative;
                     float: left;
                     text-align: center;
@@ -95,9 +106,20 @@ body {
                     float: left;
                     text-align: left;
                     width: 75%;
+                    height: $entryHeight;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
+
+                    .title {
+                        height: 2*$entryHeight/3;
+                        line-height: 2*$entryHeight/3;
+                    }
+                    .subtitle {
+                        height: $entryHeight/3;
+                        line-height: $entryHeight/3;
+                        font-size: 0.75em;
+                    }
                 }
 
                 .control {
@@ -105,46 +127,56 @@ body {
                     position: relative;
                     float: left;
                     text-align: right;
-                    font-size: 5rem;
+                    height: $entryHeight;
 
                     & > * {
-                        height: 120px;
-                        line-height: 120px;
+                        height: $entryHeight;
+                        line-height: $entryHeight;
                     }
 
                     &.enabled {
-                        .icon-toggle_on {
+                        .on {
                             display: block;
                             color: map-get($colors, primary);
                         }
 
-                        .icon-toggle_off {
+                        .off {
                             display: none;
                         }
                     }
 
-                    .icon-toggle_on {
+                    .on {
                         display: none;
                     }
 
-                    .icon-toggle_off {
+                    .off {
                         display: block;
                     }
                 }
             }
         }
 
-
-
-        .confirm {
+        .footer {            
             position: absolute;
-            bottom: 5%;
+            bottom: 0;
             text-align: center;
-            height: 120px;
-            line-height: 120px;
-            width: 90%;
-            background: map-get($colors, primary);
-            border-radius: 20px;
+            height: 80px;
+            line-height: 80px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-content: stretch;
+
+            .button {
+                flex-grow: 1;
+                background: map-get($colors, secondary);
+
+                &.active {
+                    background: map-get($colors, primary);
+                }
+            }
         }
     }
 

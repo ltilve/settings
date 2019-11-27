@@ -28,46 +28,50 @@
             <div class="container">
                 <a href="#" class="entry" onclick="window.show('datetime');">
                     <div class="icon">
-                        <span class="icon-time"></span>
+                        <i class="fa fa-clock"></i>
                     </div>
                     <div class="label">
                         Date & Time
                     </div>
+                    <div class="control">
+                    </div>
                 </a>
                 <a href="#" class="entry">
                     <div class="icon">
-                        <span class="icon-bluetooth"></span>
+                        <i class="fab fa-bluetooth-b"></i>
                     </div>
                     <div class="label" onclick="window.show('bluetooth');">
                         Bluetooth
                     </div>
                     <div id="BluetoothControl" class="control enabled" onclick="window.toggle_bluetooth();">
-                        <span class="icon-toggle_on"></span>
-                        <span class="icon-toggle_off"></span>
+                        <span class="fa fa-toggle-on on"></span>
+                        <span class="fa fa-toggle-off off"></span>
                     </div>
                 </a>
                 <a href="#" class="entry" onclick="window.show('wifi');">
                     <div class="icon">
-                        <span class="icon-wifi"></span>
+                        <i class="fas fa-wifi"></i>
                     </div>
                     <div class="label">
                         Wifi
                     </div>
                     <div class="control">
-                        <span class="icon-toggle_off"></span>
+                        <!-- <span class="fa fa-toggle-on on"></span> -->
+                        <span class="fa fa-toggle-off off"></span>
                     </div>
                 </a>
                 <a href="#" class="entry" onclick="window.show('wired');">
                     <div class="icon">
-                        <span class="icon-ethernet"></span>
+                        <i class="fas fa-network-wired"></i>
                     </div>
                     <div class="label">
                         Wired
                     </div>
                 </a>
                 <a href="#" class="entry" onclick="window.show('version');">
+                    <div class="icon"></div>
                     <div class="icon">
-                        <span class="icon-speed"></span>
+                        <i class="fas fa-tachometer-alt"></i>
                     </div>
                     <div class="label">
                         Version info
@@ -78,7 +82,10 @@
 
         <div class="secondary page hide" id="datetime">
             <h1 class="header">
-                Date & Time
+                <a href="#" class="backButton" onclick="window.hide('datetime')">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                Date & Time 
             </h1>
             <div class="entry">
                 <h2>
@@ -90,20 +97,59 @@
                     Time
                 </h2>
             </div>
-            <a href="#" class="confirm button" onclick="window.hide('datetime')">
-                Confirm
-            </a>
         </div>
 
         <div class="secondary page hide" id="bluetooth">
             <h1 class="header">
+                <a href="#" class="backButton" onclick="window.hide('bluetooth')">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
                 Bluetooth
             </h1>
             <div id="BluetoothContainer" class="container"></div>
+            <div class="footer">
+                <a href="#" filter="available" class="button active" onclick="window.setFilter_bluetooth(this)">
+                    Available
+                </a>
+                <a href="#" filter="paired" class="button" onclick="window.setFilter_bluetooth(this)">
+                    Paired
+                </a>
+                <a href="#" filter="connected" class="button" onclick="window.setFilter_bluetooth(this)">
+                    Connected
+                </a>
+            </div>
             <script id="bluetooth-device-template" type="x-tmpl-mustache">
+                <div class="entry" deviceId="{{device}}">
+                    <div class="icon">
+                        <span class="fab fa-bluetooth"></span>
+                    </div>
+                    <div class="label" onclick="window.manage_bluetooth('{{device}}', {{properties.paired}}, {{ properties.connected }})">
+                        <div class="title">
+                            {{ properties.name }}
+                        </div>
+                        <div class="subtitle">
+                            {{ properties.address }}
+                        </div>
+                    </div>
+                    <div class="control" onclick="window.remove_device_bluetooth('{{device}}')">
+                        <span class="fa fa-trash"></span>
+                    </div>
+                </div>
+            </script>
+        </div>
+
+        <div class="secondary page hide" id="wifi">
+            <h1 class="header">
+                <a href="#" class="backButton" onclick="window.hide('wifi')">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                Wifi
+            </h1>
+            <div id="WifiContainer" class="container"></div>
+            <script id="wifi-device-template" type="x-tmpl-mustache">
                 <a href="#" class="entry">
                     <div class="icon">
-                        <span class="icon-{{ properties.icon }}"></span>
+                        <span class="icon-wifi"></span>
                     </div>
                     <div class="label">
                         {{ properties.name }}
@@ -113,36 +159,24 @@
                     </div>
                 </a>
             </script>
-            <a href="#" class="confirm button" onclick="window.hide('bluetooth')">
-                Confirm
-            </a>
-        </div>
-
-        <div class="secondary page hide" id="wifi">
-            <h1 class="header">
-                Wifi
-            </h1>
-            <a href="#" class="confirm button" onclick="window.hide('wifi')">
-                Confirm
-            </a>
         </div>
 
         <div class="secondary page hide" id="wired">
             <h1 class="header">
+                <a href="#" class="backButton" onclick="window.hide('wired')">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
                 Wired
             </h1>
-            <a href="#" class="confirm button" onclick="window.hide('wired')">
-                Confirm
-            </a>
         </div>
 
         <div class="secondary page hide" id="version">
             <h1 class="header">
+                <a href="#" class="backButton" onclick="window.hide('version')">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
                 Version info
             </h1>
-            <a href="#" class="confirm button" onclick="window.hide('version')">
-                Confirm
-            </a>
         </div>
 
         <div class="log" id="log">
