@@ -74,7 +74,15 @@ module.exports = {
                 use: [
                     MiniCSSExtractPlugin.loader,
                     "css-loader",
-                    "sass-loader"
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sassOptions: {
+                                indentWidth: 4,
+                                includePaths: ['./src', './node_modules'],
+                            },
+                        },
+                    },
                 ]
             },
             {
