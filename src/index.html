@@ -147,17 +147,22 @@
             </h1>
             <div id="WifiContainer" class="container"></div>
             <script id="wifi-device-template" type="x-tmpl-mustache">
-                <a href="#" class="entry">
+                <div class="entry" service="{{service}}">
                     <div class="icon">
-                        <span class="icon-wifi"></span>
+                        <span class="fas fa-wifi"></span>
                     </div>
-                    <div class="label">
-                        {{ properties.name }}
+                    <div class="label" onclick="window.manage_bluetooth('{{device}}', {{properties.paired}}, {{ properties.connected }})">
+                        <div class="title">
+                            {{ properties.name }}
+                        </div>
+                        <div class="subtitle">
+                            {{ properties.ethernet.address }}
+                        </div>
                     </div>
                     <div class="control">
-                        <span class="icon-clear"></span>
+                        {{ properties.strength }}%
                     </div>
-                </a>
+                </div>
             </script>
         </div>
 
