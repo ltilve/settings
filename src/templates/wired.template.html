@@ -1,37 +1,33 @@
 <div class="container">
     <h2 class="my-5">
         <div class="row">
-            <div class="col-1" onclick="wifi.hide()">
+            <div class="col-1" onclick="wired.hide()">
                 <i class="fas fa-chevron-left"></i>
             </div>
             <div class="col-10">
-                Wifi
+                Wired
             </div>
-            <div class="col-1" onclick="wifi.show()">
-                <i class="fas fa-sync"></i>               
-            </div> 
         </div>
     </h2>
     <div class="list-group scrollable">
         {{ #devices }}
             <div class="row border-bottom py-3 list-group-action">
                 <div class="col-1">
-                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-network-wired"></i>
                 </div>
-                <div class="col-6">
+                <div class="col-9">
                     <div>
                         {{ properties.name }}
                     </div>
                     <div class="badge badge-secondary">
-                        {{ properties.ethernet.address}}
+                        {{ properties.ipv4.address}}
                     </div>
                 </div>
-                <div class="col-5 text-right">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{properties.strength}}%;" aria-valuenow="{{properties.strength}}" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                <div class="col-2 text-right">
+
                 </div>
             </div>
         {{ /devices }}
     </div>
+</div>
 </div>
