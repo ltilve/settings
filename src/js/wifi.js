@@ -36,7 +36,7 @@ export function init() {
         template = result;
         Mustache.parse(template);
     }, function(error) {
-        console.error('ERROR Loading bluetooth template', error);
+        console.error('ERROR Loading wifi template', error);
     });
 }
 
