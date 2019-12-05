@@ -6,7 +6,7 @@ import { api } from 'agl-js-api';
 export function init() {
     api.init();
     init_bluetooth();
-    // init_wifi();
+    init_wifi();
 }
 
 window.api = api;
