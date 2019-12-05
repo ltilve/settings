@@ -1,0 +1,73 @@
+<div class="container">
+    <h2 class="my-5">
+        Settings
+    </h2>
+    <div class="row border-bottom py-3">
+        <div class="col-1">
+            <i class="fa fa-clock"></i>
+        </div>
+        <div class="col-9">
+            Date & Time
+        </div>
+        <div class="col-2 text-right">
+            
+        </div>
+    </div>
+    <div class="row border-bottom py-3">
+        <div class="col-1">
+            <i class="fab fa-bluetooth-b"></i>
+        </div>
+        <div class="col-9" onclick="window.bluetooth.show()">
+            Bluetooth
+        </div>
+        <div class="col-2 text-right">
+            {{ #bluetooth }}
+                <span class="fa fa-toggle-on on text-primary"></span>                
+            {{ /bluetooth }}
+            {{ ^bluetooth }}
+                <span class="fa fa-toggle-off off"></span>             
+            {{ /bluetooth }}
+        </div>
+    </div>
+    <div class="row border-bottom py-3">
+        <div class="col-1">
+            <i class="fas fa-wifi"></i>
+        </div>
+        <div class="col-9">
+            Wifi
+        </div>
+        <div class="col-2 text-right">
+            {{ #wifi }}
+                <span class="fa fa-toggle-on on text-primary"></span>                
+            {{ /wifi }}
+            {{ ^wifi }}
+                <span class="fa fa-toggle-off off"></span>             
+            {{ /wifi }}
+        </div>
+    </div>
+    <div class="row border-bottom py-3">
+        <div class="col-1">
+            <i class="fas fa-network-wired"></i>
+        </div>
+        <div class="col-9">
+            Wired
+        </div>
+        <div class="col-2 text-right">
+            
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-1">
+            <i class="fas fa-tachometer-alt"></i>
+        </div>
+        <div class="col-9">
+            Version info
+        </div>
+        <div class="col-2 text-right">
+            
+        </div>
+    </div>
+</div>
+<div class="log" id="log">
+
+</div>

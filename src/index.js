@@ -15,51 +15,12 @@
  */
 /* JS */
 import { init } from './js/app';
-import { toggle as toggle_bluetooth, 
-    pair as pair_bluetooth, 
-    connect as connect_bluetooth,
-    disconnect as disconnect_bluetooth,
-    filter as setFilter_bluetooth,
-    remove as remove_device_bluetooth
-} from './js/bluetooth';
+
+import { api } from 'agl-js-api';
+import * as bluetooth from './js/bluetooth';
 
 /* CSS */
 import './styles/app.scss';
 
-window.show = function(page){
-    document.getElementById('main').classList.add('hide');
-    document.getElementById(page).classList.remove('hide');
-}
-
-window.hide = function(page) {
-    document.getElementById('main').classList.remove('hide');
-    document.getElementById(page).classList.add('hide');
-}
-
-window.toggle_bluetooth =  toggle_bluetooth;
-window.remove_device_bluetooth = remove_device_bluetooth;
-window.manage_remove_bluetooth = function(deviceId, isPaired, isConnected) { 
-    if ( !isConnected ) {
-        remove_device_bluetooth(deviceId);
-    } else if ( isConnected ) {
-        disconnect_bluetooth(deviceId);
-    }
-}
-window.manage_bluetooth = function(deviceId, isPaired, isConnected) {
-    if ( !isPaired && !isConnected ) {
-        pair_bluetooth(deviceId);
-    } else if ( isPaired && !isConnected ) {
-        connect_bluetooth(deviceId);
-    }
-};
-window.setFilter_bluetooth = function(entry){
-    setFilter_bluetooth(entry.getAttribute('filter'));
-    var buttons = document.getElementById('bluetooth').getElementsByClassName('footer')[0].getElementsByClassName('button');
-
-    for( var i = 0; i < buttons.length; i++ ) {
-        buttons[i].classList.remove('active');
-    }
-
-    entry.classList.add('active');
-}
+api.init();
 init();

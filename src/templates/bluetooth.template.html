@@ -1,0 +1,52 @@
+<div class="container">
+    <h2 class="my-5">
+        <div class="row">
+            <div class="col-1" onclick="bluetooth.hide()">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="col-10">
+                Bluetooth
+            </div>
+            <div class="col-1" onclick="bluetooth.show()">
+                <i class="fas fa-sync"></i>               
+            </div> 
+        </div>
+    </h2>
+    <div class="list-group scrollable">
+        {{ #devices }}
+            <div class="row border-bottom py-3 list-group-action">
+                <div class="col-1">
+                    <i class="fab fa-bluetooth"></i>
+                </div>
+                <div class="col-9" onclick="bluetooth.manage('{{device}}', {{properties.paired}}, {{ properties.connected }})">
+                    <div>
+                        {{ properties.name }}
+                    </div>
+                    <div class="badge badge-secondary">
+                        {{ properties.address}}
+                    </div>
+                </div>
+                <div class="col-2 text-right" onclick="bluetooth.remove('{{device}}')">
+                    <i class="fa fa-trash"></i>
+                </div>
+            </div>
+        {{ /devices }}
+    </div>
+    <div class="btn-group fixed-bottom" role="group" aria-label="Basic example">
+        <button type="button" 
+                onclick="bluetooth.available()"
+                class="btn {{ ^filter.available }} btn-secondary {{ /filter.available }}{{ #filter.available }} btn-primary {{ /filter.available }}">
+            Available
+        </button>
+        <button type="button" 
+                onclick="bluetooth.paired()"
+                class="btn {{ ^filter.paired }} btn-secondary {{ /filter.paired }}{{ #filter.paired }} btn-primary {{ /filter.paired }}">
+            Paired
+        </button>
+        <button type="button" 
+                onclick="bluetooth.connected()"
+                class="btn {{ ^filter.connected }} btn-secondary {{ /filter.connected }}{{ #filter.connected }} btn-primary {{ /filter.connected }}">
+            Connected
+        </button>
+    </div>
+</div>

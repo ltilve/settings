@@ -1,37 +1,43 @@
 import { bluetooth } from 'agl-js-api';
 import Mustache from 'mustache';
-
-window.bluetooth = bluetooth;
+import { load as load_template } from './templates';
+import * as app from './app';
+import { getMaxListeners } from 'cluster';
 
 var template;
-var filterBy = 'available';
+var page = {
+    devices: [],
+    filter: {
+        available: true,
+        paired: false,
+        connected: false
+    },
+    powered: false
+};
 
-function update_state(state) {
-    var control = document.getElementById('BluetoothControl');
-    if( state.powered ) {
-        control.classList.add('enabled');
-    } else {
-        control.classList.remove('enabled');
-    }
+function render(){
+    document.body.innerHTML = Mustache.render(template, page);
 }
 
 function update_devices(devices) {
-    var deviceList = document.getElementById('BluetoothContainer');
-    deviceList.innerHTML = '';
-
+    page.devices = [];
     devices.forEach(function(device) {
-        if ( filterBy === 'connected' && device.properties.connected ) {
-            deviceList.innerHTML += Mustache.render(template, device);
-        } else if ( filterBy === 'paired' && 
+        if ( page.filter.connected && device.properties.connected ) {
+            page.devices.push(device);
+        } else if ( page.filter.paired && 
                 device.properties.paired && 
                 !device.properties.connected ) {
-            deviceList.innerHTML += Mustache.render(template, device); 
-        } else if ( filterBy === 'available' & 
+            page.devices.push(device);
+        } else if ( page.filter.available & 
                 !device.properties.connected && 
                 !device.properties.paired) {
-            deviceList.innerHTML += Mustache.render(template, device); 
+            page.devices.push(device);
         }
     });
+
+    console.log(page);
+
+    render();
 }
 
 function refresh_devices() {
@@ -40,39 +46,84 @@ function refresh_devices() {
     });
 }
 
+function pair(deviceId) {
+    bluetooth.pair(deviceId).then(function() {
+        refresh_devices();
+    });
+}
+
+function connect(deviceId) {
+    bluetooth.connect(deviceId).then(function() {
+        refresh_devices();
+    });
+}
+
+function disconnect(deviceId) {
+    bluetooth.disconnect(deviceId).then(function() {
+        refresh_devices();
+    });
+}
+
 export function toggle() {
     bluetooth.adapter_state().then(function(result) {
         bluetooth.adapter_state({
             powered: !result.powered
-        }).then(update_state);
+        }).then(function(state) {
+            page.powered = state.powered;
+        });
     });
 }
 
 export function init() {
-    template = document.getElementById('bluetooth-device-template').innerHTML;
-    Mustache.parse(template);
-    bluetooth.adapter_state({
-        discovery: true
-    }).then(update_state);
-    refresh_devices();
+    load_template('bluetooth.template.html').then(function(result) {
+        template = result;
+        Mustache.parse(template);
+    }, function(error) {
+        console.error('ERROR Loading bluetooth template', error);
+    });
 
-    // This code has been commented to improve performance
-    // bluetooth.on_device_changes(function(data) {
-    //     bluetooth.managed_objects().then(function(result){
-    //         update_devices(result.devices);
-    //     });
-    // }).then(function(result) {
-    //     console.log('SUBSCRIBED TO DEVICE CHANGES');
-    // });
+    bluetooth.adapter_state().then(function(state) {
+        page.powered = state.powered;
+    });
 }
 
-export function filter(filter) {
-    filterBy = filter;
+export function getState() {
+    return page.powered;
+}
+
+export function show() {
     refresh_devices();
 }
 
-export function getFilter() {
-    return filterBy;
+export function hide() {
+    app.show();
+}
+
+export function available() {
+    page.filter = {
+        available: true,
+        paired: false,
+        connected: false
+    };
+    refresh_devices();
+}
+
+export function connected() {
+    page.filter = {
+        available: false,
+        paired: false,
+        connected: true
+    };
+    refresh_devices();
+}
+
+export function paired() {
+    page.filter = {
+        available: false,
+        paired: true,
+        connected: false
+    };
+    refresh_devices();
 }
 
 export function remove(deviceId) {
@@ -81,20 +132,12 @@ export function remove(deviceId) {
     });
 }
 
-export function pair(deviceId) {
-    bluetooth.pair(deviceId).then(function() {
-        refresh_devices();
-    });
-}
-
-export function connect(deviceId) {
-    bluetooth.connect(deviceId).then(function() {
-        refresh_devices();
-    });
-}
-
-export function disconnect(deviceId) {
-    bluetooth.disconnect(deviceId).then(function() {
-        refresh_devices();
-    });
+export function manage(deviceId, paired, connected) {
+    if ( connected ) {
+        connect(deviceId);
+    } else if ( paired ) {
+        disconnect(deviceId);
+    } else {
+        pair(deviceId);
+    }
 }
