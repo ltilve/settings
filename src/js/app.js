@@ -1,5 +1,3 @@
-import * as bluetooth from './bluetooth';
-import * as wifi from './wifi';
 import { load as load_template } from './templates';
 import Mustache from 'mustache';
 
@@ -19,8 +17,6 @@ export function init() {
         template = result;
         Mustache.parse(template);
         show();
-        bluetooth.init();
-        wifi.init();
     }, function(error) {
         console.error('ERRROR loading main template', error);
     });
