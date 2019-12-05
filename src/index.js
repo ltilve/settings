@@ -18,9 +18,12 @@ import { init } from './js/app';
 
 import { api } from 'agl-js-api';
 import * as bluetooth from './js/bluetooth';
+import * as wifi from './js/wifi';
 
 /* CSS */
 import './styles/app.scss';
 
+window.bluetooth = bluetooth;
+window.wifi = wifi;
 api.init();
 init();

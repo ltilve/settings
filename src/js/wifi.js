@@ -1,34 +1,49 @@
 import { network } from 'agl-js-api';
 import Mustache from 'mustache';
+import { load as load_template } from './templates';
+import * as app from './app';
 
 var template;
+var page = {
+    devices: []
+}
 
+function render(){
+    document.body.innerHTML = Mustache.render(template, page);
+}
 
 function update_devices(devices) {
-    console.log('update_devices', devices);
-    var deviceList = document.getElementById('WifiContainer');
-    deviceList.innerHTML = '';
-
+    page.devices = [];
     devices.forEach(function(device) {
         if( device.properties.type === 'wifi' ) {
-            deviceList.innerHTML += Mustache.render(template, device);
+            page.devices.push(device);
         }
+    });
+
+    console.log(page);
+
+    render();
+}
+
+function refresh_devices() {
+    network.services().then(function(result) {
+        update_devices(result.values);
     });
 }
 
 export function init() {
-    template = document.getElementById('wifi-device-template').innerHTML;
-    Mustache.parse(template);
-
-    setInterval(function() {
-        network.services().then(function(result) {
-            update_devices(result.values);
-        })
-    }, 10000);
-
-    network.on_global_state(function(result) {
-        console.log('on_global_state', result);
-    }).then(function(){
-        console.log('SUBSCRIBED', 'on_global_state');
+    load_template('wifi.template.html').then(function(result) {
+        template = result;
+        Mustache.parse(template);
+    }, function(error) {
+        console.error('ERROR Loading bluetooth template', error);
     });
+}
+
+export function show() {
+    refresh_devices();
+}
+
+export function hide() {
+    app.show();
 }
