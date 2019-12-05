@@ -2,7 +2,6 @@ import { bluetooth } from 'agl-js-api';
 import Mustache from 'mustache';
 import { load as load_template } from './templates';
 import * as app from './app';
-import { getMaxListeners } from 'cluster';
 
 var template;
 var page = {
@@ -34,8 +33,6 @@ function update_devices(devices) {
             page.devices.push(device);
         }
     });
-
-    console.log(page);
 
     render();
 }
