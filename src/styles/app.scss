@@ -5,8 +5,15 @@ $colors: (
   grey:             #848286
 );
 
-@import "style.css";
+
+$body-bg: transparent;
+$body-color: #FFFFFF;
+$list-group-bg: transparent;
+$font-size-base: 1.5rem;
+
+@import "~bootstrap/scss/bootstrap";
 @import "main.scss";
 @import "portrait.scss";
 @import "landscape.scss";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+

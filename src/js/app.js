@@ -1,12 +1,26 @@
-import { init as init_bluetooth } from './bluetooth';
+import * as bluetooth from './bluetooth';
 import { init as init_wifi } from './wifi';
+import { load as load_template } from './templates';
+import Mustache from 'mustache';
 
-import { api } from 'agl-js-api';
+var template;
+var page = {
+    bluetooth: true,
+    wifi: false
+};
 
-export function init() {
-    api.init();
-    init_bluetooth();
-    init_wifi();
+export function show() {
+    page.bluetooth = bluetooth.getState();
+    document.body.innerHTML = Mustache.render(template, page);
 }
 
-window.api = api;
+export function init() {
+    load_template('main.template.html').then(function(result) {
+        template = result;
+        Mustache.parse(template);
+        show();
+        bluetooth.init();
+    }, function(error) {
+        console.error('ERRROR loading main template', error);
+    });
+}
