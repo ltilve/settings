@@ -1,15 +1,9 @@
-$colors: (
-  primary:          #00ADDC,
-  secondary:        #223340,
-  font:             #FFFFFF,
-  grey:             #848286
-);
-
-
 $body-bg: transparent;
 $body-color: #FFFFFF;
 $list-group-bg: transparent;
 $font-size-base: 1.5rem;
+$input-bg: transparent;
+$input-color: #FFFFFF;
 
 @import "~bootstrap/scss/bootstrap";
 @import "main.scss";

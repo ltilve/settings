@@ -2,14 +2,6 @@
     display: none;
 }
 
-::-webkit-progress-bar {
-    background: map-get($colors, grey);
-}
-
-::-webkit-progress-value {
-    background-color: map-get($colors, primary);
-}
-
 html {
     height: 100%;
     background-size: cover;
