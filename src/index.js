@@ -20,6 +20,7 @@ import { api } from 'agl-js-api';
 import * as bluetooth from './js/bluetooth';
 import * as wifi from './js/wifi';
 import * as wired from './js/wired';
+import * as version from './js/version';
 import * as date from './js/date';
 
 /* CSS */
@@ -29,6 +30,7 @@ window.bluetooth = bluetooth;
 window.wifi = wifi;
 window.wired = wired;
 window.date = date;
+window.version = version;
 
 api.init();
 app.init();
@@ -36,3 +38,4 @@ bluetooth.init();
 wifi.init();
 wired.init();
 date.init();
+version.init();

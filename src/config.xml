@@ -18,5 +18,6 @@
     <param name="homescreen" value="ws" />
     <param name="network-manager" value="ws" />
     <param name="Bluetooth-Manager" value="ws" />
+    <param name="platform-info" value="ws" />
   </feature>
 </widget>
